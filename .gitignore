@@ -12,4 +12,5 @@ config/jei/world/*
 config/jei/world
 servers.dat
 servers.dat_old
-screenshots/worlds/singleplayer/*
+screenshots/*
+resourcepacks/*
