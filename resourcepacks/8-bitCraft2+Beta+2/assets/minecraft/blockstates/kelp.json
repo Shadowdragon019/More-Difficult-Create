@@ -1,0 +1,11 @@
+{
+    "variants": {
+        "": [
+			{ "model": "block/kelp", "weight":2 },
+            { "model": "block/kelp1", "weight":2 },
+			{ "model": "block/kelp2", "weight":2 },
+			{ "model": "block/kelp3", "weight":2 },
+			{ "model": "block/kelp4", "weight":1 }
+        ]
+    }
+}

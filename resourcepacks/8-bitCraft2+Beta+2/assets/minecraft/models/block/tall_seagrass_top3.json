@@ -1,0 +1,9 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"ambientocclusion": false,
+	"textures": {
+		"particle": "block/tall_seagrass_top2",
+		"texture": "block/tall_seagrass_top2"
+	}
+}
