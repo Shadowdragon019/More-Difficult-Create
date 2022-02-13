@@ -1,0 +1,15 @@
+saves/*
+usercache.json
+usernamecache.json
+options.txt
+crash-reports/*
+logs/*
+.curseclient
+ realms_persistence.json
+.DS_Store
+*/.DS_Store
+config/jei/world/*
+config/jei/world
+servers.dat
+servers.dat_old
+screenshots/worlds/singleplayer/*
