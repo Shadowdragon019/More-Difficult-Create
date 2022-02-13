@@ -1,7 +1,0 @@
-{
-	"credit": "Made with Blockbench",
-	"parent": "minecraft:block/template_seagrass",
-	"textures": {
-		"texture": "block/seagrass1"
-	}
-}
