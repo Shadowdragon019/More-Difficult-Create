@@ -60,11 +60,11 @@ onEvent('item.registry', event => {
 	
 	*/
 	makeItemsWithSuffix(["Iron"], ["Rod"])
-	makeItemsWithSuffix(["Iron", "Andesite Alloy"], ["Plate"])
+	makeItemsWithSuffix(["Iron", "Copper", "Gold", "Brass", "Andesite Alloy"], ["Plate"])
 	
-	makeItemsWithPrefix(["Iron", "Andesite Alloy"], ["Molten"])
+	makeItemsWithPrefix(["Iron", "Copper", "Gold", "Brass", "Andesite Alloy"], ["Molten"])
 	
-	makeItemsWithSuffixAndPrefix(["Iron", "Andesite Alloy"], [ ["Semi-Pressed", "Plate"], ["Molten", "Plate"] ])
+	makeItemsWithSuffixAndPrefix(["Iron", "Copper", "Gold", "Brass", "Andesite Alloy"], [ ["Semi-Pressed", "Plate"], ["Molten", "Plate"] ])
 	
 	
 	

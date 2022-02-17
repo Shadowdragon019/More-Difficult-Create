@@ -8,5 +8,5 @@
 	backpackInventorySizeColumns = 9
 	#The amount of slot rows in the backpack inventory.
 	#Range: 1 ~ 7
-	backpackInventorySize = 1
+	backpackInventorySize = 3
 

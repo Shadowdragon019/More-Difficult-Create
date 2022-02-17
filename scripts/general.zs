@@ -1,5 +1,8 @@
 import crafttweaker.api.tag.MCTag;
-import crafttweaker.api.recipe.Replacer;
+import crafttweaker.api.recipe.CraftingTableRecipeManager;
+import crafttweaker.api.recipe.IRecipeManager;
+import crafttweaker.api.recipe.type.Recipe;
+import crafttweaker.api.world.Container;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.item.ItemDefinition;
 import crafttweaker.api.ingredient.IIngredient;
@@ -18,21 +21,16 @@ import mods.jei.JEI;
 // Variables //
 var verySturyPlanks = <tag:items:crafttweaker:very_strudy/planks>;
 var verySturyLogs = <tag:items:crafttweaker:very_strudy/logs>;
+var reinforcedPlanks = <item:kubejs:reinforced_planks>;
+var reinforcedPlanksSlab = <item:kubejs:reinforced_planks_slab>;
 var ironRods = <tag:items:forge:rods/iron>;
+var ironPlates = <tag:items:forge:plates/iron>;
+var airItem = <item:minecraft:air>;
+var woodenRods = <tag:items:forge:rods/wooden>;
 
 // Tags //
 // Items //
-<tag:items:crafttweaker:very_strudy/logs>.add(<tag:items:minecraft:spruce_logs>);
-<tag:items:crafttweaker:very_strudy/logs>.add(<tag:items:minecraft:dark_oak_logs>);
-<tag:items:crafttweaker:very_strudy/planks>.add(<item:minecraft:spruce_planks>, <item:minecraft:dark_oak_planks>);
-<tag:items:crafttweaker:very_strudy>.add(<tag:items:crafttweaker:very_strudy/logs>);
-<tag:items:crafttweaker:very_strudy>.add(<tag:items:crafttweaker:very_strudy/planks>);
-
-<tag:items:forge:rods/all_metal>.add(<tag:items:forge:rods>);
-
-// Tags //
-// Items //
-// Replace items in tags //
+// Functions //
 function replaceTags (tag as MCTag<ItemDefinition>, items as IItemStack[]) as void {
     for item in tag {
 		tag.remove(item);
@@ -45,6 +43,14 @@ function replaceTags (tag as MCTag<ItemDefinition>, items as IItemStack[]) as vo
 	}
 	
 }
+
+<tag:items:crafttweaker:very_strudy/logs>.add(<tag:items:minecraft:spruce_logs>);
+<tag:items:crafttweaker:very_strudy/logs>.add(<tag:items:minecraft:dark_oak_logs>);
+<tag:items:crafttweaker:very_strudy/planks>.add(<item:minecraft:spruce_planks>, <item:minecraft:dark_oak_planks>);
+<tag:items:crafttweaker:very_strudy>.add(<tag:items:crafttweaker:very_strudy/logs>);
+<tag:items:crafttweaker:very_strudy>.add(<tag:items:crafttweaker:very_strudy/planks>);
+
+<tag:items:forge:rods/all_metal>.add(<tag:items:forge:rods>);
 
 replaceTags(<tag:items:forge:plates>, [<item:kubejs:iron_plate>, <item:kubejs:andesite_alloy_plate>]);
 replaceTags(<tag:items:forge:plates/iron>, [<item:kubejs:iron_plate>]);
@@ -142,6 +148,73 @@ function slabCrafting(name as string, block as IItemStack, slab as IItemStack) a
 		[block, block, block]
 	]);
 }
+
+function replaceCraftingTableShaped(recipeName as string, output as IItemStack, ingredients as IIngredient[][]) as void {
+	craftingTable.remove(output);
+	craftingTable.addShaped(recipeName, output, ingredients);
+}
+
+replaceCraftingTableShaped("minecraft/crafting_table/shaped/iron_helmet", <item:minecraft:iron_helmet>, [
+	[ironPlates, ironPlates, ironPlates],
+	[ironPlates, airItem, ironPlates]
+]);
+replaceCraftingTableShaped("minecraft/crafting_table/shaped/iron_chestplate", <item:minecraft:iron_chestplate>, [
+	[ironPlates, airItem, ironPlates],
+	[ironPlates, ironPlates, ironPlates],
+	[ironPlates, ironPlates, ironPlates]
+]);
+replaceCraftingTableShaped("minecraft/crafting_table/shaped/iron_leggings", <item:minecraft:iron_leggings>, [
+	[ironPlates, ironPlates, ironPlates],
+	[ironPlates, airItem, ironPlates],
+	[ironPlates, airItem, ironPlates]
+]);
+replaceCraftingTableShaped("minecraft/crafting_table/shaped/iron_boots", <item:minecraft:iron_boots>, [
+	[ironPlates, airItem, ironPlates],
+	[ironPlates, airItem, ironPlates]
+]);
+replaceCraftingTableShaped("minecraft/crafting_table/shaped/shield", <item:minecraft:shield>, [
+	[ironRods, ironRods, ironRods],
+	[ironRods, reinforcedPlanks, ironRods],
+	[airItem, ironRods, airItem]
+]);
+replaceCraftingTableShaped("minecraft/crafting_table/shaped/iron_sword", <item:minecraft:iron_sword>, [
+	[ironPlates],
+	[ironPlates],
+	[woodenRods]
+]);
+replaceCraftingTableShaped("minecraft/crafting_table/shaped/iron_shovel", <item:minecraft:iron_shovel>, [
+	[ironPlates],
+	[woodenRods],
+	[woodenRods]
+]);
+replaceCraftingTableShaped("minecraft/crafting_table/shaped/iron_pickaxe", <item:minecraft:iron_pickaxe>, [
+	[ironPlates, ironPlates, ironPlates],
+	[airItem, woodenRods, airItem],
+	[airItem, woodenRods, airItem]
+]);
+replaceCraftingTableShaped("minecraft/crafting_table/shaped/iron_axe", <item:minecraft:iron_axe>, [
+	[ironPlates, ironPlates],
+	[ironPlates, woodenRods],
+	[airItem, woodenRods]
+]);
+replaceCraftingTableShaped("minecraft/crafting_table/shaped/iron_hoe", <item:minecraft:iron_hoe>, [
+	[ironPlates, ironPlates],
+	[airItem, woodenRods],
+	[airItem, woodenRods]
+]);
+replaceCraftingTableShaped("minecraft/crafting_table/shaped/trowel", <item:quark:trowel>, [
+	[woodenRods, airItem, airItem],
+	[airItem, ironPlates, ironPlates]
+]);
+replaceCraftingTableShaped("minecraft/crafting_table/shaped/bucket", <item:minecraft:bucket>, [
+	[ironPlates, airItem, ironPlates],
+	[airItem, ironPlates, airItem]
+]);
+replaceCraftingTableShaped("minecraft/crafting_table/shaped/compass", <item:minecraft:compass>, [
+	[airItem, ironPlates, airItem],
+	[ironPlates, <tag:items:forge:dusts/redstone>, ironPlates],
+	[airItem, ironPlates, airItem]
+]);
 
 // Slab Crafting //
 slabCrafting("minecraft/crafting_table/shaped/slab/reinforced_planks", <item:kubejs:reinforced_planks>, <item:kubejs:reinforced_planks_slab>);
