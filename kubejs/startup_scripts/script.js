@@ -14,11 +14,17 @@ onEvent('item.registry', event => {
 	function makeItemsWithSuffix(materials, suffixes) {
 		suffixes.forEach(suffix => {
 			materials.forEach(material => {
+				var tagMaterial = material
+				
+				if (tagMaterial == "Golden") {
+					tagMaterial = "Gold"
+				}
+				
 				var itemAsTag = (`${material}_${suffix}`).replace(" ", "_").toLowerCase()
 				
 				event.create(itemAsTag, item => item.displayName(`${material} ${suffix}`))
 				addItemToTag(itemAsTag, `${suffix}s`)
-				addItemToTag(itemAsTag, `${suffix}s/${material.replace(" ", "_").toLowerCase()}`)
+				addItemToTag(itemAsTag, `${suffix}s/${tagMaterial.replace(" ", "_").toLowerCase()}`)
 			})
 		})
 	}
@@ -27,11 +33,17 @@ onEvent('item.registry', event => {
 	function makeItemsWithPrefix(materials, prefixes) {
 		prefixes.forEach(prefix => {
 			materials.forEach(material => {
+				var tagMaterial = material
+				
+				if (tagMaterial == "Golden") {
+					tagMaterial = "Gold"
+				}
+				
 				var itemAsTag = (`${prefix}_${material}`).replace(" ", "_").toLowerCase()
 				
 				event.create(itemAsTag, item => { item.displayName(`${prefix} ${material}`)})
 				addItemToTag(itemAsTag, `${prefix}s`)
-				addItemToTag(itemAsTag, `${prefix}s/${material.replace(" ", "_").toLowerCase()}`)
+				addItemToTag(itemAsTag, `${prefix}s/${tagMaterial.replace(" ", "_").toLowerCase()}`)
 			})
 		})
 	}
@@ -42,11 +54,17 @@ onEvent('item.registry', event => {
 			materials.forEach(material => {
 				var prefix = fix[0]
 				var suffix = fix[1]
+				var tagMaterial = material
+				
+				if (tagMaterial == "Golden") {
+					tagMaterial = "Gold"
+				}
+				
 				var itemAsTag = (`${prefix}_${material}_${suffix}`).replace(" ", "_").toLowerCase()
 				
 				event.create(itemAsTag, item => { item.displayName(`${prefix} ${material} ${suffix}`)})
 				addItemToTag(itemAsTag, `${suffix}s/${prefix}`)
-				addItemToTag(itemAsTag, `${suffix}s/${prefix}/${material.replace(" ", "_").toLowerCase()}`)
+				addItemToTag(itemAsTag, `${suffix}s/${prefix}/${tagMaterial.replace(" ", "_").toLowerCase()}`)
 			})
 		})
 	}
@@ -60,11 +78,11 @@ onEvent('item.registry', event => {
 	
 	*/
 	makeItemsWithSuffix(["Iron"], ["Rod"])
-	makeItemsWithSuffix(["Iron", "Copper", "Gold", "Brass", "Andesite Alloy"], ["Plate"])
+	makeItemsWithSuffix(["Iron", "Copper", "Golden", "Brass", "Andesite Alloy"], ["Plate"])
 	
-	makeItemsWithPrefix(["Iron", "Copper", "Gold", "Brass", "Andesite Alloy"], ["Molten"])
+	makeItemsWithPrefix(["Iron", "Copper", "Golden", "Brass", "Andesite Alloy"], ["Molten"])
 	
-	makeItemsWithSuffixAndPrefix(["Iron", "Copper", "Gold", "Brass", "Andesite Alloy"], [ ["Semi-Pressed", "Plate"], ["Molten", "Plate"] ])
+	makeItemsWithSuffixAndPrefix(["Iron", "Copper", "Golden", "Brass", "Andesite Alloy"], [ ["Semi-Pressed", "Plate"], ["Molten", "Plate"] ])
 	
 	
 	
