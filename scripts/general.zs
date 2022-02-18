@@ -52,8 +52,14 @@ function replaceTags (tag as MCTag<ItemDefinition>, items as IItemStack[]) as vo
 
 <tag:items:forge:rods/all_metal>.add(<tag:items:forge:rods>);
 
-replaceTags(<tag:items:forge:plates>, [<item:kubejs:iron_plate>, <item:kubejs:andesite_alloy_plate>]);
+<tag:items:minecraft:piglin_loved>.remove(<item:create:golden_sheet>);
+<tag:items:minecraft:piglin_loved>.add(<item:kubejs:golden_plate>);
+
+replaceTags(<tag:items:forge:plates>, [<item:kubejs:iron_plate>, <item:kubejs:andesite_alloy_plate>, <item:kubejs:golden_plate>, <item:kubejs:brass_plate>, <item:kubejs:copper_plate>]);
 replaceTags(<tag:items:forge:plates/iron>, [<item:kubejs:iron_plate>]);
+replaceTags(<tag:items:forge:plates/gold>, [<item:kubejs:golden_plate>]);
+replaceTags(<tag:items:forge:plates/brass>, [<item:kubejs:brass_plate>]);
+replaceTags(<tag:items:forge:plates/copper>, [<item:kubejs:copper_plate>]);
 
 replaceTags(<tag:items:forge:rods>, [<item:kubejs:iron_rod>]);
 replaceTags(<tag:items:forge:rods/iron>, [<item:kubejs:iron_rod>]);
@@ -65,25 +71,10 @@ for item in <tag:items:crafttweaker:very_strudy> {
 }
 
 // Disable JEI Items //
-for item in [<item:create:iron_sheet>, <item:createaddition:iron_rod>] {
+for item in [<item:create:iron_sheet>, <item:create:golden_sheet>, <item:create:brass_sheet>, <item:create:copper_sheet>, <item:createaddition:iron_rod>] {
 	JEI.hideIngredient(item);
 	item.addTooltip(("JEI Hidden" as TextComponent).setStyle(ChatFormatting.GRAY) as TextComponent);
 }
-
-// Event //
-/*
-A cool idea but it doesn't work
-CTEventManager.register<AnvilUpdateEvent>((event) => {
-	var left = event.left;
-	var right = event.right;
-	if ((left in <tag:items:forge:ingots/iron>) & (right in <tag:items:forge:ingots/iron>)) {
-		event.output = <item:kubejs:iron_plate>;
-		event.setAllow();
-		
-	}
-	
-});
-*/
 
 // Recipes //
 // Functions //
@@ -99,9 +90,15 @@ function addRollingRecipe(name as string, input as IIngredient, output as IItemS
 	
 }
 
-
 // Plates //
-var plateCrushing = [[<tag:items:forge:ingots/iron>.asIIngredient(), <tag:items:forge:plates/semi-pressed/iron>.asIIngredient(), <item:kubejs:iron_plate>], [<item:create:andesite_alloy>, <tag:items:forge:plates/semi-pressed/andesite_alloy>.asIIngredient(), <item:kubejs:andesite_alloy_plate>]] as IIngredient[][];
+var plateCrushing = [
+	[<tag:items:forge:ingots/iron>.asIIngredient(), <tag:items:forge:plates/semi-pressed/iron>.asIIngredient(), <item:kubejs:iron_plate>],
+	[<item:create:andesite_alloy>, <tag:items:forge:plates/semi-pressed/andesite_alloy>.asIIngredient(), <item:kubejs:andesite_alloy_plate>],
+	[<tag:items:forge:ingots/copper>.asIIngredient(), <tag:items:forge:plates/semi-pressed/copper>.asIIngredient(), <item:kubejs:copper_plate>],
+	[<tag:items:forge:ingots/brass>.asIIngredient(), <tag:items:forge:plates/semi-pressed/brass>.asIIngredient(), <item:kubejs:brass_plate>],
+	[<tag:items:forge:ingots/gold>.asIIngredient(), <tag:items:forge:plates/semi-pressed/gold>.asIIngredient(), <item:kubejs:golden_plate>]
+	
+] as IIngredient[][];
 for items in plateCrushing {
 	var ingot = items[0];
 	var semiPressed = items[1];

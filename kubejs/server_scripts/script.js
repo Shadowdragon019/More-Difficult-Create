@@ -9,8 +9,10 @@ onEvent('tags.items', event => {
 	global.addItemsToTag.forEach(itemAndTag => {
 		var item = itemAndTag[0]
 		var tag = itemAndTag[1]
+		console.log(`Item: ${item} & Tag: ${tag}`)
 		event.add(tag, item)
 	})
+
 })
 
 onEvent('recipes', event => {
@@ -20,6 +22,10 @@ onEvent('recipes', event => {
 	// array.forEach
 	// I pissed
 	event.replaceOutput({}, 'create:iron_sheet', 'kubejs:iron_plate')
+	event.replaceOutput({}, 'create:golden_sheet', 'kubejs:golden_plate')
+	event.replaceOutput({}, 'create:brass_sheet', 'kubejs:brass_plate')
+	event.replaceOutput({}, 'create:copper_sheet', 'kubejs:copper_plate')
+	
 	event.replaceOutput({}, 'createaddition:iron_rod', 'kubejs:iron_rod')
 	
 })
