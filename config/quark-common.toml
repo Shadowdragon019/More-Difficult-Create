@@ -8,7 +8,7 @@
 	#Quark replaces the Piston logic to allow for its piston features to work. If you're having troubles, try turning this off.
 	"Use Piston Logic Replacement" = true
 	#Allowed values: (0,)
-	"Piston Push Limit" = 12
+	"Piston Push Limit" = 3
 	#How many advancements deep you can see in the advancement screen. Vanilla is 2.
 	#Allowed values: (0,)
 	"Advancement Visibility Depth" = 2
@@ -1435,7 +1435,7 @@
 
 [oddities]
 	"Totem Of Holding" = true
-	Pipes = true
+	Pipes = false
 	"Matrix Enchanting" = true
 	Magnets = true
 	Crate = true

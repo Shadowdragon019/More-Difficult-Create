@@ -72,12 +72,14 @@ onEvent('item.registry', event => {
 	/*
 	IRON Rod 
 	IRON Plate
+	IRON Dust
 	Semi Pressed IRON Plate
 	Molten IRON
 	Molten IRON Plate
 	
 	*/
 	makeItemsWithSuffix(["Iron"], ["Rod"])
+	makeItemsWithSuffix(["Iron", "Copper", "Golden"], ["Dust"])
 	makeItemsWithSuffix(["Iron", "Copper", "Golden", "Brass", "Andesite Alloy"], ["Plate"])
 	
 	makeItemsWithPrefix(["Iron", "Copper", "Golden", "Brass", "Andesite Alloy"], ["Molten"])

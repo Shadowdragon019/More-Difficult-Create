@@ -1,0 +1,30 @@
+{
+  "bookGuiScale": 0,
+  "clickedVisualize": false,
+  "bookData": {
+    "apotheosis:apoth_chronicle": {
+      "viewedEntries": [
+        "apotheosis:village/fletching",
+        "apotheosis:enchanting/utility/library",
+        "apotheosis:spawner/spawners",
+        "apotheosis:spawner/stats",
+        "apotheosis:spawner/modifiers",
+        "apotheosis:spawner/capturing",
+        "apotheosis:garden/ender_lead",
+        "apotheosis:enchanting/changes/tridents"
+      ],
+      "bookmarks": [],
+      "history": [
+        "apotheosis:enchanting/changes/tridents",
+        "apotheosis:garden/ender_lead",
+        "apotheosis:spawner/capturing",
+        "apotheosis:spawner/modifiers",
+        "apotheosis:spawner/stats",
+        "apotheosis:spawner/spawners",
+        "apotheosis:enchanting/utility/library",
+        "apotheosis:village/fletching"
+      ],
+      "completedManualQuests": []
+    }
+  }
+}

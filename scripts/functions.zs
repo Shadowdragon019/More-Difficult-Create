@@ -2,6 +2,7 @@ import crafttweaker.api.ingredient.IIngredient;
 import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.item.ItemDefinition;
 import crafttweaker.api.tag.MCTag;
+import stdlib.List;
 
 
 
@@ -45,4 +46,91 @@ public function replaceTags (tag as MCTag<ItemDefinition>, items as IItemStack[]
 		
 	}
 	
+}
+
+
+
+// Wrapped Int //
+public function makeINT(input as int) as INT {
+	return new INT(input);
+
+}
+
+
+
+// OreType //
+public function makeOreType(oreVariant as string, ore as IItemStackWithMarks) as OreType {
+	var oreRemainder = <item:minecraft:air>;
+	var overrideChance = 12;
+	if oreVariant == "stone" {
+		oreRemainder = <item:minecraft:cobblestone>;
+		
+	} else if oreVariant == "granite" {
+		oreRemainder = <item:minecraft:granite>;
+		
+	} else if oreVariant == "diorite" {
+		oreRemainder = <item:minecraft:diorite>;
+		
+	} else if oreVariant == "tuff" {
+		oreRemainder = <item:minecraft:tuff>;
+		
+	} else if oreVariant == "deepslate" {
+		oreRemainder = <item:minecraft:cobbled_deepslate>;
+		
+	} else if oreVariant == "andesite" {
+		oreRemainder = <item:minecraft:andesite>;
+		
+	} else if oreVariant == "shale" {
+		oreRemainder = <item:quark:shale>;
+		
+	} else if oreVariant == "jasper" {
+		oreRemainder = <item:quark:jasper>;
+		
+	} else if oreVariant == "phyllite" {
+		oreRemainder = <item:unearthed:cobbled_phyllite>;
+		
+	} else if oreVariant == "slate" {
+		oreRemainder = <item:unearthed:cobbled_slate>;
+		
+	} else if oreVariant == "gabbro" {
+		oreRemainder = <item:unearthed:gabbro>;
+		
+	} else if oreVariant == "granodiorite" {
+		oreRemainder = <item:unearthed:granodiorite>;
+		
+	} else if oreVariant == "rhyolite" {
+		oreRemainder = <item:unearthed:rhyolite>;
+		
+	} else if oreVariant == "white_granite" {
+		oreRemainder = <item:unearthed:white_granite>;
+		
+	} else if oreVariant == "limestone" {
+		oreRemainder = <item:unearthed:cobbled_limestone>;
+		
+	} else if oreVariant == "beige_limestone" {
+		oreRemainder = <item:unearthed:cobbled_beige_limestone>;
+		
+	} else if oreVariant == "grey_limestone" {
+		oreRemainder = <item:unearthed:cobbled_grey_limestone>;
+		
+	} else if oreVariant == "siltstone" {
+		oreRemainder = <item:unearthed:siltstone>;
+		
+	} else if oreVariant == "mudstone" {
+		oreRemainder = <item:unearthed:mudstone>;
+		
+	} else if oreVariant == "conglomerate" {
+		oreRemainder = <item:unearthed:conglomerate>;
+		
+	} else if oreVariant == "sand" {
+		oreRemainder = <item:minecraft:sand>;
+		overrideChance = 48;
+		
+	} else if oreVariant == "sandstone" {
+		oreRemainder = <item:minecraft:sandstone>;
+		
+	}
+	
+	return new OreType(oreVariant, ore, oreRemainder.addMark("anvil_crushing", overrideChance));
+
 }
