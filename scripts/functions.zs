@@ -129,6 +129,12 @@ public function makeOreType(oreVariant as string, ore as IItemStackWithMarks) as
 	} else if oreVariant == "sandstone" {
 		oreRemainder = <item:minecraft:sandstone>;
 		
+	} else if oreVariant == "netherrack" {
+		oreRemainder = <item:minecraft:netherrack>;
+		
+	} else if oreVariant == "air" {
+		oreRemainder = <item:minecraft:air>;
+		
 	}
 	
 	return new OreType(oreVariant, ore, oreRemainder.addMark("anvil_crushing", overrideChance));

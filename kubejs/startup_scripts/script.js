@@ -79,7 +79,7 @@ onEvent('item.registry', event => {
 	
 	*/
 	makeItemsWithSuffix(["Iron"], ["Rod"])
-	makeItemsWithSuffix(["Iron", "Copper", "Golden"], ["Dust"])
+	makeItemsWithSuffix(["Iron", "Copper", "Golden", "Zinc"], ["Dust"])
 	makeItemsWithSuffix(["Iron", "Copper", "Golden", "Brass", "Andesite Alloy"], ["Plate"])
 	
 	makeItemsWithPrefix(["Iron", "Copper", "Golden", "Brass", "Andesite Alloy"], ["Molten"])
