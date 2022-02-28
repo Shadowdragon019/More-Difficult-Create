@@ -27,3 +27,9 @@ replaceTags(<tag:items:forge:plates/copper>, [<item:kubejs:copper_plate>]);
 <tag:items:forge:rods/all_metal>.add(<tag:items:forge:rods>);
 replaceTags(<tag:items:forge:rods>, [<item:kubejs:iron_rod>]);
 replaceTags(<tag:items:forge:rods/iron>, [<item:kubejs:iron_rod>]);
+
+
+
+// Lychee //
+<tag:items:lychee:fire_immune>.add(<item:minecraft:iron_ingot>);
+<tag:items:lychee:fire_immune>.add(<item:kubejs:molten_iron>);

@@ -21,7 +21,7 @@
 	#Whether cats, ocelots and foxes should target jerboa mobs.
 	catsAndFoxesAttackJerboas = true
 	#Whether lava can be bottled with a right click of a glass bottle.
-	lavaBottleEnabled = true
+	lavaBottleEnabled = false
 	#Whether bone serpents are neutral or hostile.
 	neutralBoneSerpents = false
 	#Maximum world y-level that cave centipedes can spawn at
