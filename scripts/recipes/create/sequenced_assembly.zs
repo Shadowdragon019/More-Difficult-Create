@@ -36,3 +36,11 @@ var andesiteAlloy = <item:create:andesite_alloy>;
 	.addStep<mods.createtweaker.DeployerApplicationRecipe>((rb) => rb.require(reinforcedPlanksSlab))
 	.addStep<mods.createtweaker.CuttingRecipe>((rb) => rb.duration(50))
 );
+
+<recipetype:create:sequenced_assembly>.addRecipe(<recipetype:create:sequenced_assembly>.builder("create/sequenced_assembly/blackstone_bulb_to_oil")
+	.transitionTo(<item:kubejs:crushed_blackstone_bulb>)
+	.require(<item:biomesoplenty:blackstone_bulb>)
+	.loops(3)
+	.addOutput(<item:kubejs:blackstone_bulb_paste>, 1)
+	.addStep<mods.createtweaker.PressingRecipe>((rb) => rb.duration(500))
+);

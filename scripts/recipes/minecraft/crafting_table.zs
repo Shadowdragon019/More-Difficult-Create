@@ -77,6 +77,7 @@ replaceCraftingTableShaped("minecraft/crafting_table/shaped/compass", <item:mine
 
 // Slab Crafting //
 slabCrafting("minecraft/crafting_table/shaped/slab/reinforced_planks", reinforcedPlanks, reinforcedPlanksSlab);
+slabCrafting("minecraft/crafting_table/shaped/slab/water-proof_planks", <item:kubejs:water-proof_planks>, <item:kubejs:water-proof_planks_slab>);
 
 
 
@@ -114,3 +115,6 @@ replaceCraftingTableShaped("minecraft/crafting_table/shaped/andesite_casing", <i
 	[andesiteAlloy, verySturyLogs, andesiteAlloy], 
 	[verySturyPlanks, verySturyPlanks, verySturyPlanks]
 ]);
+
+// Tin //
+nibCrafting("tin", <item:kubejs:tin_nugget>, <item:kubejs:tin_ingot>, <item:kubejs:tin_block>);

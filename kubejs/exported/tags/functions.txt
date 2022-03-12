@@ -1,1 +1,23 @@
-To refresh this file, delete it and run /reload command again! Last updated: Feb 8, 2022, 7:47:31 AM
+To refresh this file, delete it and run /reload command again! Last updated: Mar 8, 2022, 5:07:24 PM
+
+#load:_private/init
+- load:_private/init
+
+#nullscape:load
+- nullscape:load
+
+#minecraft:tick
+- terralith:tick
+
+#load:load
+- #nullscape:load
+
+#load:_private/load
+- #load:_private/init
+- #load:pre_load?
+- #load:load?
+- #load:post_load?
+
+#minecraft:load
+- #load:_private/load
+- terralith:setup

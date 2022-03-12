@@ -31,5 +31,15 @@ replaceTags(<tag:items:forge:rods/iron>, [<item:kubejs:iron_rod>]);
 
 
 // Lychee //
-<tag:items:lychee:fire_immune>.add(<item:minecraft:iron_ingot>);
-<tag:items:lychee:fire_immune>.add(<item:kubejs:molten_iron>);
+<tag:items:forge:ingots>.add(<item:create:andesite_alloy>);
+<tag:items:lychee:fire_immune>.add(<tag:items:forge:ingots>);
+<tag:items:lychee:fire_immune>.add(<tag:items:forge:plates>);
+<tag:items:lychee:fire_immune>.add(<tag:items:forge:plates/semi-pressed>);
+<tag:items:lychee:fire_immune>.add(<tag:items:forge:hots>);
+//<tag:items:lychee:fire_immune>.add();
+//<tag:items:lychee:fire_immune>.add();
+
+
+
+// Blackstonestone Bulb //
+// <tag:blocks:crafttweaker:blackstone_blub_spawnable>.add([<block:minecraft:polished_blackstone_wall>, <block:minecraft:polished_blackstone_brick_slab>, <block:minecraft:polished_blackstone_brick_stairs>, <block:minecraft:cracked_polished_blackstone_bricks>, <block:minecraft:gilded_blackstone>, <block:minecraft:blackstone_slab>, <block:minecraft:blackstone_wall>, <block:minecraft:polished_blackstone>, <block:minecraft:blackstone_stairs>, <block:minecraft:blackstone>, <block:minecraft:polished_blackstone_slab>, <block:minecraft:polished_blackstone_stairs>, <block:minecraft:chiseled_polished_blackstone>, <block:minecraft:polished_blackstone_bricks>, <block:minecraft:polished_blackstone_wall>, <block:minecraft:polished_blackstone_brick_wall>]);

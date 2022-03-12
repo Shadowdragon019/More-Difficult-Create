@@ -1,73 +1,74 @@
-import crafttweaker.api.event.entity.player.interact.RightClickBlockEvent;
 import crafttweaker.api.events.CTEventManager;
 import crafttweaker.api.block.BlockState;
-import crafttweaker.api.util.math.BlockPos;
-import crafttweaker.api.util.InteractionHand;
 import crafttweaker.api.block.Block;
-import crafttweaker.api.item.ItemStack;
-import crafttweaker.api.item.IItemStack;
-import crafttweaker.api.entity.type.player.Inventory;
+import crafttweaker.api.util.math.BlockPos;
+import crafttweaker.api.util.math.BlockPos;
+import crafttweaker.api.util.math.Random;
+import crafttweaker.api.util.InteractionHand;
+import crafttweaker.api.event.entity.living.LivingDeathEvent;
+import crafttweaker.api.text.Component;
+import crafttweaker.api.entity.EntityType;
+import stdlib.List;
 
 
 
-CTEventManager.register<RightClickBlockEvent>((event) => {
-	val player = event.player;
-    val blockPos = event.blockPos;
-	val inventory = player.inventory;
-	val selectedItem = inventory.selected.asIItemStack();
-	val level = player.level;
-	val blockState = level.getBlockState(blockPos);
-	val block = blockState.block;
-	var placeBlockState = <blockstate:minecraft:air>;
-	var toRemoveItem = <item:minecraft:air>;
-	var toAddItem = <item:minecraft:air>;
-	var placeBlockPos = blockPos;
-	var placeBlock = false;
-	val removeItemSlot = inventory.findSlotMatchingItem(selectedItem);
-	val removeItemStack = <item:minecraft:air>;
-	if (removeItemSlot > 0) {
-		removeItemStack = inventory.getItem(removeItemSlot).asIItemStack();
-	}
+CTEventManager.register<LivingDeathEvent>((event) => {
+	var bulbSpawnPositions = new List<BlockPos>;
+	var spawnHeight = 0;
+	var spawnWidth = 0;
+	var spawnAttempts = 0;
+	var checkingHeightProgress = 0;
+	var lootingMultiplier = 0;
+	var heightOffset = 0;
+	var isWither = false;
 	
-	if (block in <tag:blocks:minecraft:cauldrons>) {
-		if (selectedItem.registryName == <item:minecraft:lava_bucket>.registryName) {
-			event.cancel();
-			
-		}
-		if (block == <block:minecraft:lava_cauldron>) {
-			if (selectedItem.registryName == <item:minecraft:glass_bottle>.registryName) {
-				placeBlock = true;
-				placeBlockState = <blockstate:minecraft:cauldron>;
-				toAddItem = <item:alexsmobs:lava_bottle>;
-				toRemoveItem = <item:minecraft:glass_bottle>;
-				
-			} else if (selectedItem.registryName == <item:minecraft:bucket>.registryName) {
-				event.cancel();
-				
-			}
-			
-		} else {
-			if (selectedItem == <item:alexsmobs:lava_bottle>) {
-				placeBlock = true;
-				placeBlockState = <blockstate:minecraft:lava_cauldron>;
-				toAddItem = <item:minecraft:glass_bottle>;
-				toRemoveItem = <item:alexsmobs:lava_bottle>;
-				
-			}
-			
+	val entity = event.entity;
+	val blockPos = entity.onPos; // This is the block below the entity
+	val XYZ = blockPos.x as string + " " + blockPos.y as string + " " + blockPos.z as string;
+	val level = entity.level;
+	val blockAbove = level.getBlockState(blockPos.offset(0, 1, 0)).block;
+	val blockBelow = level.getBlockState(blockPos).block;
+	val remote = level.isRemote();
+	var random = level.random;
+	val entityType = entity.getType();
+	val displayName = entity.displayName.contents;
+	
+	
+	
+	if ((!remote) && (level.dimension == <resource:minecraft:the_nether>)) {
+		if (entityType == <entitytype:minecraft:wither_skeleton>) {
+			spawnHeight = 3;
+			spawnWidth = 3;
+			spawnAttempts = 2;
+			lootingMultiplier = 1;
+			isWither = true;
+		} else if (entityType == <entitytype:minecraft:wither>) {
+			spawnHeight = 11;
+			spawnWidth = 17;
+			spawnAttempts = 75;
+			lootingMultiplier = 6969;
+			isWither = true;
 		}
 		
-	} else if ((block == <block:minecraft:lava>) || (block == <block:minecraft:flowing_lava>)) {
-		print("E");
-		
+		if (isWither) {
+			for i in 0 .. random.nextInt(spawnAttempts) /* + looting level * lootingMultiplier */ {
+				bulbSpawnPositions.add(blockPos.offset(random.nextInt(spawnWidth) - (spawnWidth - 1) / 2, heightOffset, random.nextInt(spawnWidth) - (spawnWidth - 1) / 2));
+			}
+			heightOffset = ((spawnHeight - 1) / -2) - 1;
+			for bulbBlockPos in bulbSpawnPositions {
+				for i in 0 .. spawnHeight {
+					if ((level.getBlockState(bulbBlockPos.offset(0, heightOffset + checkingHeightProgress, 0)) == <blockstate:minecraft:blackstone>) && (level.isEmptyBlock(bulbBlockPos.offset(0, heightOffset + checkingHeightProgress + 1, 0)))) {
+						val server = level.asServerLevel().server;
+						// server.executeCommand("particle minecraft:dragon_breath " + bulbBlockPos.x as string + " " + (bulbBlockPos.y + 1 ) as string + " " + bulbBlockPos.z as string + " 0.25 0.25 0.25 0.01 50", true);
+						level.setBlockAndUpdate(bulbBlockPos.offset(0, heightOffset + checkingHeightProgress + 1, 0), <blockstate:biomesoplenty:blackstone_bulb>);
+						break; // Makes it place one Blackstone Bulb at a time, encourages people to tinker with mechanics a bit more for optimal farms
+					}
+					checkingHeightProgress += 1;
+				}
+			}
+		}
 	}
 	
-	if ((placeBlock) && (!(event.player.isLocalPlayer) && (event.getHand() == InteractionHand.MAIN_HAND))) {
-		level.setBlockAndUpdate(placeBlockPos, placeBlockState);
-		player.swing(InteractionHand.MAIN_HAND);
-		// inventory.removeItem(toRemoveItem);
-		inventory.setItem(removeItemSlot, selectedItem * (selectedItem.amount - 1));
-		inventory.add(toAddItem);
-	}
+	
 	
 });

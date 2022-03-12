@@ -1,0 +1,231 @@
+{
+	id: "052345D6D616821C"
+	group: ""
+	order_index: 0
+	filename: "progression"
+	title: "Progression"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [
+		{
+			title: "A Smashing Smash!"
+			icon: "minecraft:anvil"
+			x: 0.0d
+			y: 0.0d
+			shape: "gear"
+			size: 1.5d
+			id: "7CC1DC60794F5639"
+			tasks: [{
+				id: "3637A2DF67650B8C"
+				type: "item"
+				title: "Any #minecraft:anvil"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "minecraft:anvil"
+					}
+				}
+			}]
+		}
+		{
+			x: 3.0d
+			y: 0.0d
+			dependencies: ["37C63C50E6C41FDF"]
+			id: "376491C9252AB3FC"
+			tasks: [{
+				id: "2741461B90422BB1"
+				type: "item"
+				item: {
+					id: "minecraft:iron_pickaxe"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			title: "&o&eOre Doubling!"
+			x: 0.0d
+			y: -2.0d
+			subtitle: "&8Just kidding"
+			dependencies: ["7CC1DC60794F5639"]
+			optional: true
+			id: "5F47B553F99EF223"
+			tasks: [{
+				id: "62DDB8DA9C45979A"
+				type: "item"
+				title: "Any #create:crushed_ores"
+				icon: "create:crushed_copper_ore"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "create:crushed_ores"
+					}
+				}
+			}]
+		}
+		{
+			x: 1.5d
+			y: 3.5d
+			dependencies: [
+				"37C63C50E6C41FDF"
+				"1E228959F936CAB7"
+			]
+			id: "53D55382219B23FE"
+			tasks: [{
+				id: "5CE63C400D8B291F"
+				type: "item"
+				item: "createaddition:rolling_mill"
+			}]
+		}
+		{
+			title: "Very Sturdy Indeed!"
+			icon: "minecraft:spruce_log"
+			x: 3.5d
+			y: 5.5d
+			shape: "gear"
+			size: 1.5d
+			id: "5C2A6FE49AD8694A"
+			tasks: [{
+				id: "4D75B2AE4EB68419"
+				type: "item"
+				title: "Any #crafttweaker:very_strudy"
+				item: {
+					id: "itemfilters:tag"
+					Count: 1b
+					tag: {
+						value: "crafttweaker:very_strudy"
+					}
+				}
+			}]
+		}
+		{
+			x: 4.5d
+			y: -1.5d
+			dependencies: ["376491C9252AB3FC"]
+			id: "6606769C02382793"
+			tasks: [{
+				id: "528087B16F7D8C74"
+				type: "item"
+				item: {
+					id: "minecraft:diamond_pickaxe"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			icon: "minecraft:crimson_nylium"
+			x: 6.5d
+			y: -1.5d
+			dependencies: ["6606769C02382793"]
+			id: "5163849D5159049E"
+			tasks: [{
+				id: "12F31D8375CB1613"
+				type: "dimension"
+				dimension: "minecraft:the_nether"
+			}]
+		}
+		{
+			x: 5.0d
+			y: 2.0d
+			dependencies: ["461FBF2EFF799E45"]
+			id: "6229532F2D332BF0"
+			tasks: [{
+				id: "2B556B8A082C53C6"
+				type: "item"
+				item: "create:andesite_alloy"
+			}]
+		}
+		{
+			title: "Impenetrable Defense"
+			x: -2.0d
+			y: 5.0d
+			dependencies: ["6480F426FD45D0EC"]
+			optional: true
+			id: "596E02AF7FB02789"
+			tasks: [{
+				id: "3DF1A23652CD4C55"
+				type: "item"
+				item: {
+					id: "minecraft:shield"
+					Count: 1b
+					tag: {
+						Damage: 0
+					}
+				}
+			}]
+		}
+		{
+			x: 0.0d
+			y: 5.0d
+			dependencies: ["53D55382219B23FE"]
+			id: "6480F426FD45D0EC"
+			tasks: [{
+				id: "4BC6C86551136230"
+				type: "item"
+				item: "kubejs:reinforced_planks"
+			}]
+		}
+		{
+			icon: "kubejs:semi-pressed_iron_plate"
+			x: 1.5d
+			y: 1.5d
+			dependencies: ["7CC1DC60794F5639"]
+			id: "37C63C50E6C41FDF"
+			tasks: [{
+				id: "6261ED9B04D8F91D"
+				type: "item"
+				item: "kubejs:iron_plate"
+			}]
+		}
+		{
+			x: 3.5d
+			y: 3.5d
+			dependencies: [
+				"5C2A6FE49AD8694A"
+				"6229532F2D332BF0"
+			]
+			id: "1E228959F936CAB7"
+			tasks: [{
+				id: "1058AAE50E939A71"
+				type: "item"
+				item: "create:andesite_casing"
+			}]
+		}
+		{
+			x: 6.5d
+			y: 0.5d
+			dependencies: ["5163849D5159049E"]
+			id: "461FBF2EFF799E45"
+			tasks: [{
+				id: "2E640A7E3348FDF6"
+				type: "item"
+				item: "minecraft:basalt"
+			}]
+		}
+		{
+			x: 1.0d
+			y: 6.5d
+			dependencies: ["6480F426FD45D0EC"]
+			id: "568105673B76110A"
+			tasks: [
+				{
+					id: "3023D9E089ADF4D7"
+					type: "item"
+					item: "create:large_cogwheel"
+				}
+				{
+					id: "2327BE2357F62F1B"
+					type: "item"
+					item: "create:cogwheel"
+				}
+			]
+		}
+	]
+}

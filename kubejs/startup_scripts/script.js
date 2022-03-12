@@ -6,7 +6,7 @@ function addItemToTag(item, tag) {
 	global.addItemsToTag.push([item, tag])
 }
 
-onEvent('item.registry', event => {
+onEvent(`item.registry`, event => {
 	// Prefix is before
 	// Infix is middle
 	// Suffix is after
@@ -55,16 +55,24 @@ onEvent('item.registry', event => {
 				var prefix = fix[0]
 				var suffix = fix[1]
 				var tagMaterial = material
+				console.log("\nPrefix: " + prefix + "\nSuffix: " + suffix + "\nMaterial: " + material)
 				
 				if (tagMaterial == "Golden") {
 					tagMaterial = "Gold"
 				}
 				
-				var itemAsTag = (`${prefix}_${material}_${suffix}`).replace(" ", "_").toLowerCase()
+				var itemAsTag = (`${prefix}_${material}_${suffix}`)
+				itemAsTag = itemAsTag.replace(" ", "_").replace(" ", "_").toLowerCase()
+				// Why are " " and " " fucking different???
+				console.log(itemAsTag)
 				
 				event.create(itemAsTag, item => { item.displayName(`${prefix} ${material} ${suffix}`)})
 				addItemToTag(itemAsTag, `${suffix}s/${prefix}`)
 				addItemToTag(itemAsTag, `${suffix}s/${prefix}/${tagMaterial.replace(" ", "_").toLowerCase()}`)
+				if ((prefix + suffix).includes("Hot")) {
+					addItemToTag(itemAsTag, `lychee:fire_immune`)
+					
+				}
 			})
 		})
 	}
@@ -74,18 +82,25 @@ onEvent('item.registry', event => {
 	IRON Plate
 	IRON Dust
 	Semi Pressed IRON Plate
-	Molten IRON
-	Molten IRON Plate
+	Semi Pressed Hot IRON Plate
+	Hot IRON
+	Hot IRON Plate
 	
 	*/
 	makeItemsWithSuffix(["Iron"], ["Rod"])
 	makeItemsWithSuffix(["Iron", "Copper", "Golden", "Zinc"], ["Dust"])
 	makeItemsWithSuffix(["Iron", "Copper", "Golden", "Brass", "Andesite Alloy"], ["Plate"])
 	
-	makeItemsWithPrefix(["Iron", "Copper", "Golden", "Brass", "Andesite Alloy"], ["Molten"])
+	makeItemsWithPrefix(["Iron", "Copper", "Golden", "Brass", "Andesite Alloy"], ["Hot"])
 	
-	makeItemsWithSuffixAndPrefix(["Iron", "Copper", "Golden", "Brass", "Andesite Alloy"], [ ["Semi-Pressed", "Plate"], ["Molten", "Plate"] ])
+	makeItemsWithSuffixAndPrefix(["Iron", "Copper", "Golden", "Brass", "Andesite Alloy"], [ ["Semi-Pressed", "Plate"], ["Hot", "Plate"], ["Semi-Pressed Hot", "Plate"] ])
 	
+	// event.create(`name`, item => { item.displayName(`Name`)})
+	event.create(`crushed_blackstone_bulb`, item => { item.displayName(`Crushed Blackstone Bulb`)})
+	event.create(`blackstone_bulb_paste`, item => { item.displayName(`Blackstone Bulb Paste`)})
+	
+	event.create(`tin_nugget`, item => { item.displayName(`Tin Nugget`)})
+	event.create(`tin_ingot`, item => { item.displayName(`Tin Ingot`)})
 	
 	
 })
@@ -106,11 +121,11 @@ function makeItemsWithSuffixes(materials, suffixes) {
 			type = suffix.toLowerCase()
 			}
 			
-			onEvent('item.registry', event => {
+			onEvent(`item.registry`, event => {
 				event.create(itemAsString, item => item.displayName(`${material} ${suffix}`))
 			})
 			
-			onEvent('tags.items', event => {
+			onEvent(`tags.items`, event => {
 				event.add(`forge:${type}`, itemAsString)
 			})
 			
@@ -124,19 +139,42 @@ makeItemsWithSuffixes(["Iron"], ["Rod", "Sheet"])
 makeItemsWithSuffixes(["Andesite Alloy"], ["Sheet"])
 */
 
-onEvent('block.registry', event => {
-	event.create('reinforced_planks', block => {
-		block.material('wood')
+onEvent(`block.registry`, event => {
+	event.create(`reinforced_planks`, block => {
+		block.material(`wood`)
 		block.hardness(1)
-		block.displayName('Reinforced Planks')
-		block.tag('minecraft:mineable/axe')
+		block.displayName(`Reinforced Planks`)
+		block.tag(`minecraft:mineable/axe`)
+	})
+	event.create(`reinforced_planks_slab`, block => {
+		block.material(`wood`)
+		block.hardness(1)
+		block.displayName(`Reinforced Planks Slab`)
+		block.type(`slab`)
+		block.tag(`minecraft:mineable/axe`)
 	})
 	
-	event.create('reinforced_planks_slab', block => {
-		block.material('wood')
+	event.create(`water-proof_planks`, block => {
+		block.material(`wood`)
 		block.hardness(1)
-		block.displayName('Reinforced Planks Slab')
-		block.type('slab')
-		block.tag('minecraft:mineable/axe')
+		block.displayName(`Water-Proof Planks`)
+		block.tag(`minecraft:mineable/axe`)
 	})
+	event.create(`water-proof_planks_slab`, block => {
+		block.material(`wood`)
+		block.hardness(1)
+		block.displayName(`Water-Proof Planks Slab`)
+		block.type(`slab`)
+		block.tag(`minecraft:mineable/axe`)
+	})
+	
+	event.create(`tin_block`, block => {
+		block.material(`rock`)
+		block.hardness(5)
+		block.resistance(6)
+		block.displayName(`Tin Block`)
+		block.tag(`minecraft:mineable/pickaxe`)
+	})
+	
+	
 })

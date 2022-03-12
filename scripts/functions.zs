@@ -140,3 +140,24 @@ public function makeOreType(oreVariant as string, ore as IItemStackWithMarks) as
 	return new OreType(oreVariant, ore, oreRemainder.addMark("anvil_crushing", overrideChance));
 
 }
+
+
+
+public function nibCrafting(name as string, nugget as IItemStack, ingot as IItemStack, block as IItemStack) as void {
+	craftingTable.addShapeless("minecraft/crafting_table/shaped/" + name + "/ingot_to_nugget", nugget * 9, 
+		[ingot]
+	);
+	craftingTable.addShaped("minecraft/crafting_table/shaped/" + name + "/nugget_to_ingot", ingot, [
+		[nugget, nugget, nugget],
+		[nugget, nugget, nugget],
+		[nugget, nugget, nugget]
+	]);
+	craftingTable.addShapeless("minecraft/crafting_table/shaped/" + name + "/block_to_ingot", ingot * 9, 
+		[block]
+	);
+	craftingTable.addShaped("minecraft/crafting_table/shaped/" + name +"/ingot_to_block", block, [
+		[ingot, ingot, ingot],
+		[ingot, ingot, ingot],
+		[ingot, ingot, ingot]
+	]);
+}

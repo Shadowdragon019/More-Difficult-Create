@@ -6,6 +6,7 @@ import crafttweaker.api.tag.MCTag;
 import stdlib.List;
 
 
+
 // Int Wrapper
 public class INT {
 	public var Int as int : get, set;
@@ -226,29 +227,6 @@ public class OreTypeCollection {
 
 
 
-/*var eeee = new OreTypeCollection("copper", [
-	makeOreType("stone", <item:minecraft:copper_ore>, <item:minecraft:cobblestone>),
-	makeOreType("deepslate", <item:minecraft:deepslate_copper_ore>, <item:minecraft:cobbled_deepslate>),
-	makeOreType("andesite", <item:mores:andesite_copper_ore>, <item:minecraft:andesite>),
-	makeOreType("diorite", <item:mores:diorite_copper_ore>, <item:minecraft:diorite>),
-	makeOreType("granite", <item:mores:granite_copper_ore>, <item:minecraft:granite>),
-	makeOreType("tuff", <item:mores:tuff_copper_ore>, <item:minecraft:tuff>)
-	
-]);*/
-
-
-
-/*for OreType in eeee.oreTypes {
-	craftingTable.addShaped(OreType.oreVariant, OreType.oreRemainder, [
-		[OreType.ore, OreType.ore, OreType.ore], 
-		[OreType.ore, OreType.ore, OreType.ore], 
-		[OreType.ore, OreType.ore, OreType.ore]
-	]);
-	
-}*/
-
-
-
 public class MaterialGroup {
 
 	public var groupName as string : get;
@@ -262,12 +240,13 @@ public class MaterialGroup {
 	public var oreTypeCollection as OreTypeCollection : get;
 	public var plate as IItemStackWithMarks : get;
 	public var plateSemiPressed as IItemStackWithMarks : get;
-	public var molten as IItemStackWithMarks : get;
-	public var moltenPlate as IItemStackWithMarks : get;
+	public var plateSemiPressedHot as IItemStackWithMarks : get;
+	public var hot as IItemStackWithMarks : get;
+	public var hotPlate as IItemStackWithMarks : get;
 	public var rod as IItemStackWithMarks : get;
 	public var wire as IItemStackWithMarks : get;
 	
-	public this(groupName as string, material as IItemStackWithMarks, block as IItemStackWithMarks, nugget as IItemStackWithMarks, raw as IItemStackWithMarks, rawBlock as IItemStackWithMarks, crushed as IItemStackWithMarks, dust as IItemStackWithMarks, oreTypeCollection as OreTypeCollection, plate as IItemStackWithMarks, plateSemiPressed as IItemStackWithMarks, molten as IItemStackWithMarks, moltenPlate as IItemStackWithMarks, rod as IItemStackWithMarks, wire as IItemStackWithMarks) {
+	public this(groupName as string, material as IItemStackWithMarks, block as IItemStackWithMarks, nugget as IItemStackWithMarks, raw as IItemStackWithMarks, rawBlock as IItemStackWithMarks, crushed as IItemStackWithMarks, dust as IItemStackWithMarks, oreTypeCollection as OreTypeCollection, plate as IItemStackWithMarks, plateSemiPressed as IItemStackWithMarks, plateSemiPressedHot as IItemStackWithMarks, hot as IItemStackWithMarks, hotPlate as IItemStackWithMarks, rod as IItemStackWithMarks, wire as IItemStackWithMarks) {
 		this.groupName = groupName;
 		this.material = material;
 		this.block = block;
@@ -279,8 +258,9 @@ public class MaterialGroup {
 		this.oreTypeCollection = oreTypeCollection;
 		this.plate = plate;
 		this.plateSemiPressed = plateSemiPressed;
-		this.molten = molten;
-		this.moltenPlate = moltenPlate;
+		this.plateSemiPressedHot = plateSemiPressedHot;
+		this.hot = hot;
+		this.hotPlate = hotPlate;
 		this.rod = rod;
 		this.wire = wire;
 		

@@ -2,6 +2,8 @@ import crafttweaker.api.item.IItemStack;
 import crafttweaker.api.data.ListData;
 import crafttweaker.api.data.IData;
 import mods.create.CrushingManager;
+import mods.create.SequencedAssemblyManager;
+import mods.create.SplashingManager;
 
 
 
@@ -17,11 +19,11 @@ var zinc = new MaterialGroup("zinc",
 		makeOreType("deepslate", <item:create:deepslate_zinc_ore>.addMark("anvil_crushing", 1, 85))
 		
 	]), 
-	air, air, air, air, 
+	air, air, air, air, air, 
 	air, air
 );
 var copper = new MaterialGroup("copper", 
-	<item:minecraft:copper_ingot>.addMark("anvil_crushing", 4), <item:minecraft:copper_block>, <item:create:copper_nugget>, 
+	<item:minecraft:copper_ingot>.addMark("anvil_crushing", 3), <item:minecraft:copper_block>, <item:create:copper_nugget>, 
 	<item:minecraft:raw_copper>.addMark("anvil_crushing", 4, 35), <item:minecraft:raw_copper_block>.addMark("anvil_crushing", 39, 35), <item:create:crushed_copper_ore>, <item:kubejs:copper_dust>, 
 	new OreTypeCollection("copper", <tag:items:forge:ores/copper>, [
 		makeOreType("stone", <item:minecraft:copper_ore>.addMark("anvil_crushing", 4, 35)),
@@ -47,7 +49,7 @@ var copper = new MaterialGroup("copper",
 		makeOreType("sand", <item:unearthed:sandstone_copper_ore>.addMark("anvil_crushing", 4, 35))
 		
 	]), 
-	<item:kubejs:copper_plate>, <item:kubejs:semi-pressed_copper_plate>.addMark("anvil_crushing", 1), <item:kubejs:molten_copper>, <item:kubejs:molten_copper_plate>, 
+	<item:kubejs:copper_plate>, <item:kubejs:semi-pressed_copper_plate>.addMark("anvil_crushing", 1), <item:kubejs:semi-pressed_hot_copper_plate>, <item:kubejs:hot_copper>, <item:kubejs:hot_copper_plate>, 
 	<item:createaddition:copper_rod>, <item:createaddition:copper_wire>
 );
 var iron = new MaterialGroup("iron", 
@@ -77,11 +79,11 @@ var iron = new MaterialGroup("iron",
 		makeOreType("sand", <item:unearthed:sandstone_iron_ore>.addMark("anvil_crushing", 1, 25))
 		
 	]), 
-	<item:kubejs:iron_plate>, <item:kubejs:semi-pressed_iron_plate>.addMark("anvil_crushing", 1), <item:kubejs:molten_iron>, <item:kubejs:molten_iron_plate>, 
+	<item:kubejs:iron_plate>, <item:kubejs:semi-pressed_iron_plate>.addMark("anvil_crushing", 1), <item:kubejs:semi-pressed_hot_iron_plate>, <item:kubejs:hot_iron>, <item:kubejs:hot_iron_plate>, 
 	<item:kubejs:iron_rod>, <item:createaddition:iron_wire>
 );
 var gold = new MaterialGroup("gold", 
-	<item:minecraft:gold_ingot>.addMark("anvil_crushing", 2), <item:minecraft:gold_block>, <item:minecraft:gold_nugget>, 
+	<item:minecraft:gold_ingot>.addMark("anvil_crushing", 3), <item:minecraft:gold_block>, <item:minecraft:gold_nugget>, 
 	<item:minecraft:raw_gold>.addMark("anvil_crushing", 1, 25), <item:minecraft:raw_gold_block>.addMark("anvil_crushing", 11, 25), <item:create:crushed_gold_ore>, <item:kubejs:golden_dust>, 
 	new OreTypeCollection("gold", <tag:items:forge:ores/gold>, [
 		makeOreType("stone", <item:minecraft:gold_ore>.addMark("anvil_crushing", 1, 25)),
@@ -108,11 +110,11 @@ var gold = new MaterialGroup("gold",
 		makeOreType("netherrack", <item:minecraft:nether_gold_ore>.addMark("anvil_crushing", 0, 55))
 		
 	]), 
-	<item:kubejs:golden_plate>, <item:kubejs:semi-pressed_golden_plate>.addMark("anvil_crushing", 1), <item:kubejs:molten_golden>, <item:kubejs:molten_golden_plate>, 
+	<item:kubejs:golden_plate>, <item:kubejs:semi-pressed_golden_plate>.addMark("anvil_crushing", 1), <item:kubejs:semi-pressed_hot_golden_plate>, <item:kubejs:hot_golden>, <item:kubejs:hot_golden_plate>, 
 	<item:createaddition:gold_rod>, <item:createaddition:gold_wire>
 );
 var lapis = new MaterialGroup("lapis", 
-	<item:minecraft:lapis_lazuli>.addMark("anvil_crushing", 2), <item:minecraft:lapis_block>, air, 
+	<item:minecraft:lapis_lazuli>.addMark("anvil_crushing", 3), <item:minecraft:lapis_block>, air, 
 	<item:minecraft:lapis_lazuli>.addMark("anvil_crushing", 8, 10), <item:minecraft:lapis_lazuli>.addMark("anvil_crushing", 72, 10), <item:minecraft:lapis_lazuli>, air, 
 	new OreTypeCollection("lapis", <tag:items:forge:ores/lapis>, [
 		makeOreType("stone", <item:minecraft:lapis_ore>.addMark("anvil_crushing", 8, 10)),
@@ -138,7 +140,7 @@ var lapis = new MaterialGroup("lapis",
 		makeOreType("sand", <item:unearthed:sandstone_lapis_ore>.addMark("anvil_crushing", 8, 10))
 		
 	]), 
-	air, air, air, air,
+	air, air, air, air, air,
 	air, air
 );
 var netheriteScrap = new MaterialGroup("netherite_scrap",
@@ -148,21 +150,21 @@ var netheriteScrap = new MaterialGroup("netherite_scrap",
 		makeOreType("air", <item:minecraft:ancient_debris>.addMark("anvil_crushing", 1, 25))
 		
 	]), 
-	air, air, air, air, 
+	air, air, air, air, air,
 	air, air
 );
 var brass = new MaterialGroup("brass",
-	<item:create:brass_ingot>.addMark("anvil_crushing", 2), <item:create:brass_block>, <item:create:brass_nugget>, 
+	<item:create:brass_ingot>.addMark("anvil_crushing", 3), <item:create:brass_block>, <item:create:brass_nugget>, 
 	air, air, air, air, 
 	new OreTypeCollection("brass", <tag:items:forge:ores>, []), 
-	<item:kubejs:brass_plate>, <item:kubejs:semi-pressed_brass_plate>.addMark("anvil_crushing", 1), <item:kubejs:molten_brass>, <item:kubejs:molten_brass_plate>, 
+	<item:kubejs:brass_plate>, <item:kubejs:semi-pressed_brass_plate>.addMark("anvil_crushing", 1), <item:kubejs:semi-pressed_hot_brass_plate>, <item:kubejs:hot_brass>, <item:kubejs:hot_brass_plate>, 
 	<item:createaddition:brass_rod>, air
 );
 var andesiteAlloy = new MaterialGroup("andesite_alloy",
 	<item:create:andesite_alloy>.addMark("anvil_crushing", 3), air, air, 
 	air, air, air, air, 
 	new OreTypeCollection("andesite_alloy", <tag:items:forge:ores>, []), 
-	<item:kubejs:andesite_alloy_plate>, <item:kubejs:semi-pressed_andesite_alloy_plate>.addMark("anvil_crushing", 1), <item:kubejs:molten_andesite_alloy>, <item:kubejs:molten_andesite_alloy_plate>, 
+	<item:kubejs:andesite_alloy_plate>, <item:kubejs:semi-pressed_andesite_alloy_plate>.addMark("anvil_crushing", 1), <item:kubejs:semi-pressed_hot_andesite_alloy_plate>, <item:kubejs:hot_andesite_alloy>, <item:kubejs:hot_andesite_alloy_plate>, 
 	<item:create:shaft>, air
 );
 var quartz = new MaterialGroup("quartz",
@@ -172,7 +174,7 @@ var quartz = new MaterialGroup("quartz",
 		makeOreType("air", <item:minecraft:nether_quartz_ore>.addMark("anvil_crushing", 1, 25))
 		
 	]), 
-	air, air, air, air, 
+	air, air, air, air, air,
 	air, air
 );
 var diamond = new MaterialGroup("diamond", 
@@ -202,7 +204,7 @@ var diamond = new MaterialGroup("diamond",
 		makeOreType("sand", <item:unearthed:sandstone_diamond_ore>.addMark("anvil_crushing", 1, 25))
 		
 	]), 
-	air, air, air, air, 
+	air, air, air, air, air,
 	air, air
 );
 var emerald = new MaterialGroup("emerald", 
@@ -232,7 +234,7 @@ var emerald = new MaterialGroup("emerald",
 		makeOreType("sand", <item:unearthed:sandstone_emerald_ore>.addMark("anvil_crushing", 1, 25))
 		
 	]), 
-	air, air, air, air, 
+	air, air, air, air, air,
 	air, air
 );
 var coal = new MaterialGroup("coal", 
@@ -262,7 +264,7 @@ var coal = new MaterialGroup("coal",
 		makeOreType("sand", <item:unearthed:sandstone_coal_ore>.addMark("anvil_crushing", 1, 25))
 		
 	]), 
-	air, air, air, air, 
+	air, air, air, air, air,
 	air, air
 );
 var redstone = new MaterialGroup("redstone", 
@@ -292,7 +294,7 @@ var redstone = new MaterialGroup("redstone",
 		makeOreType("sand", <item:unearthed:sandstone_redstone_ore>.addMark("anvil_crushing", 5, 60))
 		
 	]), 
-	air, air, air, air, 
+	air, air, air, air, air,
 	air, air
 );
 
@@ -310,6 +312,9 @@ var raw as IItemStackWithMarks;
 var rawBlock as IItemStackWithMarks;
 var crushed as IItemStackWithMarks;
 var groupName as string;
+var plateSemiPressedHot as IItemStackWithMarks;
+var hot as IItemStackWithMarks;
+var hotPlate as IItemStackWithMarks;
 
 
 
@@ -318,6 +323,9 @@ for materialGroup in plateMaterials {
 	material = materialGroup.material;
 	semiPressed = materialGroup.plateSemiPressed;
 	plate = materialGroup.plate;
+	plateSemiPressedHot = materialGroup.plateSemiPressedHot;
+	hot = materialGroup.hot;
+	hotPlate = materialGroup.hotPlate;
 	groupName = materialGroup.groupName;
 	
 	
@@ -360,8 +368,48 @@ for materialGroup in plateMaterials {
 	
 	
 	
-	
+	// Lava //
+	<recipetype:lychee:item_inside>.addJsonRecipe("lychee/item_inside/lava/hot/" + groupName, {
+		"type": "lychee:item_inside",
+		"item_in": {
+			"item": material.registryName
+		},
+		"block_in": {
+			"blocks": ["minecraft:lava"],
+			"state": {
+				"level": 0
+			}
+		},
+		"post": [
+			{
+				"type": "drop_item",
+				// "description": "yeet.test",
+				// can't figure out how to make it work
+				"item": hot.registryName
+			},
+			{
+				"type": "place",
+				"block": "minecraft:air",
+				"contextual": {
+					"type": "chance",
+					"chance": 0.33
+				}
+			}
+		]
+	});
 	<recipetype:create:pressing>.remove(plate);
+	<recipetype:create:sequenced_assembly>.addRecipe(<recipetype:create:sequenced_assembly>.builder("create/sequenced_assembly/hot_plate/" + groupName)
+		.transitionTo(plateSemiPressedHot.itemStack)
+		.require(hot.itemStack)
+		.loops(6)
+		.addOutput(hotPlate.itemStack, 1)
+		.addStep<mods.createtweaker.PressingRecipe>((rb) => rb.duration(50))
+	);
+	
+	
+	
+	// Splashing
+	<recipetype:create:splashing>.addRecipe("create/splashing/plate/" + groupName, [plate.itemStack], hotPlate, 1000);
 	
 	
 	
