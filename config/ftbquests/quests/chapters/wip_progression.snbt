@@ -1,0 +1,26 @@
+{
+	id: "305EA9604D280733"
+	group: ""
+	order_index: 1
+	filename: "wip_progression"
+	title: "Wip Progression"
+	default_quest_shape: ""
+	default_hide_dependency_lines: false
+	quests: [{
+		x: 0.0d
+		y: 0.0d
+		id: "7C661C3478F5C034"
+		tasks: [{
+			id: "050712B998221284"
+			type: "item"
+			title: "Any #forge:ores"
+			item: {
+				id: "itemfilters:tag"
+				Count: 1b
+				tag: {
+					value: "forge:ores"
+				}
+			}
+		}]
+	}]
+}

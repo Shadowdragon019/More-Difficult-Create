@@ -11,6 +11,7 @@ import mods.create.PressingManager;
 
 // Food //
 <item:minecraft:glow_berries>.food = FoodProperties.create(4, 0.375);
+<item:biomesoplenty:blackstone_bulb>.food = FoodProperties.create(2, 0.1875);
 
 
 

@@ -154,6 +154,18 @@ onEvent(`block.registry`, event => {
 		block.tag(`minecraft:mineable/axe`)
 	})
 	
+	event.create(`incomplete_sticky_water-proof_planks`, block => {
+		block.material(`wood`)
+		block.hardness(1)
+		block.displayName(`Incomplete Sticky Water-Proof Planks`)
+		block.tag(`minecraft:mineable/axe`)
+	})
+	event.create(`sticky_water-proof_planks`, block => {
+		block.material(`wood`)
+		block.hardness(1)
+		block.displayName(`Sticky Water-Proof Planks`)
+		block.tag(`minecraft:mineable/axe`)
+	})
 	event.create(`water-proof_planks`, block => {
 		block.material(`wood`)
 		block.hardness(1)
